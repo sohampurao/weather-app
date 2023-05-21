@@ -45,7 +45,7 @@
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <a class="navbar-brand fw-semibold" href="#">Weather App</a>
+          <a class="navbar-brand" href="#">Weather App</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -78,155 +78,23 @@
       <div class="container d-flex justify-content-between mt-2">
         <section>
           <article class="current-details">
-            <div class="time" id="time">
-              12:12<span class="am-pm text-uppercase" id="am-pm"> pm</span>
-            </div>
-            <div class="date text-center" id="date">Monday, 12 Dec</div>
-            <ul class="weather-details list-unstyled d-block mt-2 rounded-3">
-              <li class="weather-item">
-                <div>Humidity</div>
-                <div id="humidity">23%</div>
-              </li>
-              <li class="weather-item">
-                <div>Pressure</div>
-                <div>12345 pa</div>
-              </li>
-              <li class="weather-item">
-                <div>Wind Speed</div>
-                <div>1000pa</div>
-              </li>
-              <li class="weather-item">
-                <div>Sunrise</div>
-                <div>6:30 am</div>
-              </li>
-              <li class="weather-item">
-                <div>Sunset</div>
-                <div id="sunset">7:00 am</div>
-              </li>
-            </ul>
+            <div class="time" id="time"></div>
+            <div class="date text-center" id="date"></div>
+            <ul
+              class="weather-details list-unstyled d-block mt-2 rounded-3"
+              id="weather-details"
+            ></ul>
           </article>
         </section>
 
         <section>
-          <article class="other-info text-end">
-            <div class="time-zone" id="time-zone">Asia/kolkata</div>
-            <div class="longitude-latitude" id="longitude-latitude">
-              1235003:1234324
-            </div>
-          </article>
+          <article class="other-info text-end" id="other-info"></article>
         </section>
       </div>
 
       <section class="mt-auto mb-3">
         <div class="swiper container my-swiper">
-          <div class="swiper-wrapper">
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-
-            <article class="forecast p-2 rounded swiper-slide">
-              <img
-                src="https://openweathermap.org/img/wn/10d@2x.png"
-                alt="weather icon"
-                class="weather-icon"
-              />
-              <div class="pb-2">
-                <h5 class="day">Tuesday</h5>
-                <hr />
-                <div class="forecast-temp">Night- 64.23 &#8451;</div>
-                <hr />
-                <div class="forecast-temp">Day- 34.12 &#8451;</div>
-              </div>
-            </article>
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          <div class="swiper-wrapper" id="forecast-cards"></div>
         </div>
       </section>
     </main>

@@ -1,5 +1,5 @@
 /* Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Poppins:wght@200,400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,700;1,400;1,600&display=swap');
 
 /* Box sizing rules */
 *,
@@ -84,6 +84,10 @@ header {
     min-height: 10vh;
 }
 
+.navbar-brand {
+    font-weight: 500;
+}
+
 .navbar-toggler:focus {
     box-shadow: none !important;
 }
@@ -91,6 +95,19 @@ header {
 /* main */
 main {
     min-height: 90vh;
+    position: relative;
+}
+
+body::after,
+body::before {
+    content: ' ';
+    position: absolute;
+    z-index: -999999;
+    top: 0%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))
 }
 
 /* current details */
@@ -127,6 +144,12 @@ ul.weather-details>li.weather-item {
     padding-block: 0.6rem;
 }
 
+.longitude,
+.latitude {
+    font-size: var(--fs-small);
+    font-weight: 400;
+}
+
 /* forecast */
 .forecast {
     border: 2px solid rgb(171, 171, 171);
@@ -135,7 +158,7 @@ ul.weather-details>li.weather-item {
 
 .weather-icon {
     margin-inline: auto;
-    width: 120px;
+    width: 90px;
 }
 
 .swiper-navBtn {
@@ -154,4 +177,8 @@ ul.weather-details>li.weather-item {
 
 .swiper-button-prev {
     left: 0;
+}
+
+.forecast-temp {
+    font-size: var(--fs-small);
 }
