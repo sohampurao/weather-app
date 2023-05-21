@@ -39,6 +39,20 @@
     <!-- script.js file -->
     <script defer src="script.js"></script>
 
+    <style>
+      body {
+        background-image: url(/images/background.jpg);
+        background-position: center;
+        background-clip: border-box;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      body::after,
+      body::before {
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      }
+    </style>
+
     <title>Weather App</title>
   </head>
   <body>
