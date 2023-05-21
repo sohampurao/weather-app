@@ -7,7 +7,7 @@ const foreCastCardsElement = document.getElementById('forecast-cards');
 
 // Api key obtained from : https://rapidapi.com/weatherbit/api/weather
 const credentials = {
-  'X-RapidAPI-Key': '4dfb71fbe5msh610f85f9ca54dd5p14ee0fjsn40755e26f42c',
+  'X-RapidAPI-Key': '187fe28ed6mshfe6ea6d154ab6fdp1542ffjsn7bb94517d905',
   'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
 };
 
@@ -76,7 +76,11 @@ const getCurrentLocationWeatherData = () => {
     };
     fetch(url, options).then((response) =>
       response.json().then((response) => {
-        showCurrentLocationWeatherData(response);
+        if (response.message) {
+          return alert(response.message2);
+        } else {
+          showCurrentLocationWeatherData(response);
+        }
       })
     );
   });
@@ -99,43 +103,41 @@ const showCurrentLocationWeatherData = (response) => {
   } = response.data[0];
 
   weatherDetailsElement.innerHTML = `<li class="weather-item">
-  <div>City</div>
+  <div title='location'><i class="fa-solid fa-location-dot"></i></div>
   <div>${city_name}</div>
 </li>
 <li class="weather-item">
-  <div>Temperature</div>
+  <div title='Temprerature'><i class="bi bi-sunrise-fill"></i></div>
   <div>${temp} &#8451;</div>
 </li>
 <li class="weather-item">
-  <div>UV index</div>
-  <div>${getIntensityLabel(uv)}</div>
+  <div title='Wind Speed'><i class="bi bi-wind"></i></div>
+  <div>${wind_spd.toFixed(3)} Km/hr</div>
 </li>
 <li class="weather-item">
-  <div>Pressure</div>
-  <div>${pres} Pa</div>
-</li>
-<li class="weather-item">
-  <div>Wind Speed</div>
-  <div>${wind_spd}} Km/hr</div>
-</li>
-<li class="weather-item">
-  <div>Sunrise</div>
+  <div title="Sunrise"><i class="bi bi-sunrise-fill"></i></div>
   <div>${sunrise} AM</div>
 </li>
 <li class="weather-item">
-  <div>Sunset</div>
+  <div title='Sunset'><i class="bi bi-sunset-fill"></i></div>
   <div>${sunset} PM</div>
 </li>`;
 
   otherInfoElement.innerHTML = `<div class="time-zone" id="time-zone">${timezone}</div>
-  <div class="country-code">
+  <div class="other-info-item">
     ${country_code}
   </div>
-  <div class="longitude">
+  <div class="other-info-item">
     Longitude ${lon}
   </div>
-  <div class="latitude">
+  <div class="other-info-item">
     Longitude ${lat}
+  </div>
+  <div class="other-info-item">
+    Pressure: ${pres} Pa
+  </div>
+  <div class="other-info-item">
+    UV index: ${getIntensityLabel(uv)}
   </div>`;
 };
 
@@ -149,27 +151,31 @@ const getWeatherForecastData = () => {
     };
     fetch(url, options).then((response) =>
       response.json().then((response) => {
-        const data = response.data;
-        let forecastCards = '';
-        data.forEach(displayCards);
-        function displayCards(item, index) {
-          let day = getDayFromDate(item.datetime);
-          forecastCards += `<article class="forecast p-2 rounded swiper-slide">
-        <img
-          src="https://cdn.weatherbit.io/static/img/icons/${item.weather.icon}.png"
-          alt="weather icon"
-          class="weather-icon"
-        />
-        <div class="pb-2">
-          <h>${day}</h>
-          <hr />
-          <div class="forecast-temp">Night- ${item.min_temp}&#8451;</div>
-          <hr />
-          <div class="forecast-temp">Day- ${item.max_temp}&#8451;</div>
-        </div>
-      </article>`;
+        if (response.message) {
+          return;
+        } else {
+          const data = response.data;
+          let forecastCards = '';
+          data.forEach(displayCards);
+          function displayCards(item, index) {
+            let day = getDayFromDate(item.datetime);
+            forecastCards += `<article class="forecast p-2 rounded swiper-slide">
+          <img
+            src="https://cdn.weatherbit.io/static/img/icons/${item.weather.icon}.png"
+            alt="weather icon"
+            class="weather-icon"
+          />
+          <div class="pb-2">
+            <h>${day}</h>
+            <hr />
+            <div class="forecast-temp">Night- ${item.min_temp}&#8451;</div>
+            <hr />
+            <div class="forecast-temp">Day- ${item.max_temp}&#8451;</div>
+          </div>
+        </article>`;
+          }
+          foreCastCardsElement.innerHTML = forecastCards;
         }
-        foreCastCardsElement.innerHTML = forecastCards;
       })
     );
   });
@@ -209,6 +215,7 @@ function getDayFromDate(date) {
   return daysOfWeek[dayIndex];
 }
 
+// This fuction set parameters for swipwer carousel
 const swiper = new Swiper('.my-swiper', {
   // Default parameters
   slidesPerView: 1,
@@ -237,7 +244,7 @@ const swiper = new Swiper('.my-swiper', {
       spaceBetween: 30,
     },
     1200: {
-      slidesPerView: 7,
+      slidesPerView: 6,
     },
   },
 });
