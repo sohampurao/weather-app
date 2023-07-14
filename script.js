@@ -7,7 +7,7 @@ const foreCastCardsElement = document.getElementById('forecast-cards');
 
 // Api key obtained from : https://rapidapi.com/weatherbit/api/weather
 const credentials = {
-  'X-RapidAPI-Key': '187fe28ed6mshfe6ea6d154ab6fdp1542ffjsn7bb94517d905',
+  'X-RapidAPI-Key': 'c6d63562c0msh3abf0931bc4f024p19fe1fjsnbb904e8f8fdd',
   'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
 };
 
